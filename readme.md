@@ -1,0 +1,23 @@
+# A complete ASP.NET (6, 7 & 8) course focused on Web API
+- HTTP
+- Middleware
+- Routing
+- Controllers
+- Model Binding & Validation
+- Dependency Injection
+- Environment-based Configuration
+- Entity Framework Core
+- xUnit.net Testing
+- Unit Testing (Advanced, Moq & Repository Pattern)
+- Logging and Serilog
+- Filters
+- Error Handling
+- Security: Identity & Authorization
+- JWT & Web API Authentication
+- Asp.Net Core Web API Best Practices
+- Swagger / OpenAPI
+- CORS
+- Versioning
+- Caching
+- Docker
+- Azure Deployment

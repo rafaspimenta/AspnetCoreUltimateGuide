@@ -1,0 +1,122 @@
+{
+    "machine": "T6504",
+    "ip_address": "10.143.59.4",
+    "mqtt_broker": "localhost",
+    "vpnserver": "10.143.56.10",
+    "vpn_netmask": "255.255.255.0",
+    "vpn_network": "10.143.59.0",
+    "vpn_protocol": "tcp",
+    "vpn_port": "1194",
+    "appserver": "10.143.59.1",
+    "app_manager_server": "10.143.56.67",
+    "ntpserver": "10.143.59.1",
+    "gvserver": "10.143.59.1",
+    "port_forwards": "192.168.200.45\n206:161:tcp",
+    "dual_core": "disabled",
+    "filtered_gateway": "no",
+    "uhf_configuration": "",
+    "eth_gateway": "192.168.200.45",
+	"sl_gateway": "192.168.200.45",
+    "sl_ntpserver": "192.168.200.1",
+    "posix_timezone": "Europe/Helsinki",
+    "timezone": "Europe/Helsinki",
+    "zoneinfo_timezone": "Europe/Helsinki"  
+    "components": [
+        {
+            "role": "mobile_router",
+            "hwtype": "Core",
+            "apn": "svifms.yara.com",
+            "apn_user": "",
+            "apn_pass": "",
+            "apn_auth": "",
+            "vpn_port": "1194"
+        },
+        {
+            "role": "wifi_mesh",
+            "hwtype": "Core",
+            "meshid": "hxg-mesh-net0",
+            "interface": "wlan0"
+        },
+		{
+            "role": "wifi_ap",
+            "hwtype": "Core",
+            "ssid": "T6504-AP",
+            "key": "miningthefuture",
+            "interface": "wlan1"
+        },
+        {
+			"role": "lightbar_driver",
+			"hwtype": "Core"
+		},
+        {
+            "role": "hp_position_provider",
+            "hwtype": "Core"
+        },
+        {
+            "role": "zoneinfo_timezone",
+            "hwtype": "Core"
+        }
+    ],
+    "applications": [
+		{
+            "app": "platform-services-core",
+            "device": "slave",
+            "filename": "app-platform-services-core_*.sqfs",
+            "enabled": "true"
+        },
+        {
+            "app": "platform-services-display",
+            "device": "master",
+            "filename": "app-platform-services-display_*.sqfs",
+            "enabled": "true"
+        },
+		{
+			"app": "shell-app",
+			"device": "master",
+			"filename": "app-shell-app_common-x86_*.sqfs",
+			"enabled": "true"
+		},
+        {
+            "app": "diagnostics-on-core",
+            "device": "slave",
+            "filename": "app-atom-diagnostics_core2-32*.sqfs",
+            "enabled": "true"
+        },
+		{
+			"app": "jams-on-core",
+			"device": "slave",
+			"filename": "app-oppro-x86-*.sqfs",
+            "enabled": "true"
+		},
+		{
+			"app": "gvos-on-core",
+			"device": "slave",
+			"filename": "app-oas-x86-*.sqfs",
+            "enabled": "true"
+		},
+		{
+            "app": "ra-core",
+            "device": "slave",
+            "filename": "app-reverse-assist_core2-32_2*.sqfs",
+            "enabled": "true"
+        },
+		{
+            "app": "osa-ra-plugin",
+            "device": "master",
+            "filename": "app-osa-ra-plugin_common-x86*.sqfs",
+            "enabled": "false"
+        },
+		{
+			"app": "osa-oppro-plugin",
+			"device": "master",
+			"filename": "app-osa-oppro-plugin_common-x86_*.sqfs",
+            "enabled": "true"
+		},
+		{
+			"app": "osa-diagnostics-plugin",
+			"device": "master",
+			"filename": "app-osa-diagnostics-plugin_common-x86_*.sqfs",
+            "enabled": "true"
+		}
+    ]
+}
