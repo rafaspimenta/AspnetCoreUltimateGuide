@@ -6,7 +6,7 @@ namespace _2.ECommerceOrdersApp.Models;
 
 public class Order
 {
-    private Random _random = new();
+    private readonly Random _random = new();
     public Order()
     {
         OrderNo = _random.Next(1, 99999);

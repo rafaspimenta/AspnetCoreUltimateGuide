@@ -1,4 +1,4 @@
-namespace ECommerceORdersApp
+namespace ECommerceOrdersApp
 {
     public class Program
     {

@@ -21,36 +21,33 @@ public class Program
             { 5, "Japan" }
         };
 
-        app.UseEndpoints(endpoints =>
+        app.MapGet("/countries", async context =>
         {
-            endpoints.Map("/countries", async context =>
-            {
-                await context.Response.WriteAsync($"Countries: {string.Join(", ", countries.Values)}");
-            });
+            await context.Response.WriteAsync($"Countries: {string.Join(", ", countries.Values)}");
+        });
 
-            endpoints.Map("/countries/{countryID}", async context =>
+        app.MapGet("/countries/{countryID}", async context =>
+        {
+            var countryID = context.Request.RouteValues["countryID"]?.ToString();
+            if (int.TryParse(countryID, out int id))
             {
-                var countryID = context.Request.RouteValues["countryID"]?.ToString();
-                if (int.TryParse(countryID, out int id))
+                if (countries.TryGetValue(id, out string? value))
                 {
-                    if (countries.TryGetValue(id, out string? value))
-                    {
-                        var country = value;
-                        context.Response.StatusCode = 200;
-                        await context.Response.WriteAsync($"Country: {country}");
-                    }
-                    else
-                    {
-                        context.Response.StatusCode = 404;
-                        await context.Response.WriteAsync("Country not found");
-                    }
+                    var country = value;
+                    context.Response.StatusCode = 200;
+                    await context.Response.WriteAsync($"Country: {country}");
                 }
                 else
                 {
-                    context.Response.StatusCode = 400;
-                    await context.Response.WriteAsync("Invalid country ID");
+                    context.Response.StatusCode = 404;
+                    await context.Response.WriteAsync("Country not found");
                 }
-            });
+            }
+            else
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync("Invalid country ID");
+            }
         });
 
         app.Run();
